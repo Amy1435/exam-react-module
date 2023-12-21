@@ -34,7 +34,7 @@ const PersonCard = ({
         },
     };
     return (
-        <Link className="actor-card-container" to={`person/${id}`}>
+        <Link className="actor-card-container" to={`../person/${id}`}>
             <figure>
                 <img
                     src={`https://image.tmdb.org/t/p/w500${imagePath}`}
