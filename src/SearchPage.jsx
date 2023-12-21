@@ -29,7 +29,7 @@ const SearchPage = () => {
                     `https://api.themoviedb.org/3/search/person?api_key=${apiKey}&query=${querySearch}`
                 );
                 const obj = await response.json();
-                console.log(obj.results);
+
                 setActorBySearch(obj.results);
             } catch (error) {
                 console.log(error);

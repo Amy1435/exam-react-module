@@ -27,7 +27,6 @@ const HomePage = () => {
                     `https://api.themoviedb.org/3/trending/person/day?api_key=${apiKey}&language=${lang}`
                 );
                 const obj = await response.json();
-                console.log(obj.results);
                 setPopularActors(obj.results);
             } catch (error) {
                 console.log(error);
