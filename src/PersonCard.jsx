@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import LanguageContext from "./LanguageContext";
+import { useContext } from "react";
 
 const PersonCard = ({
     id,
@@ -9,6 +11,28 @@ const PersonCard = ({
     works,
     imagePath,
 }) => {
+    const lang = useContext(LanguageContext);
+
+    const ChangeLanguageCard = {
+        "en-US": {
+            name: "Name",
+            occupation: " Occupation",
+            gender: "Gender",
+            popularity: "Popularity",
+            ["known-for"]: "Known for",
+            male: "male",
+            female: "female",
+        },
+        "it-IT": {
+            name: "Nome",
+            occupation: " Occupazione",
+            gender: "Sesso",
+            popularity: "Popolarita'",
+            ["known-for"]: "Conosciuto per",
+            male: "maschio",
+            female: "femmina",
+        },
+    };
     return (
         <Link className="actor-card-container" to={`person/${id}`}>
             <figure>
@@ -19,20 +43,27 @@ const PersonCard = ({
             </figure>
             <div className="actor-info">
                 <p>
-                    <strong>Name:</strong> {name}
+                    <strong>{ChangeLanguageCard[lang].name}:</strong> {name}
                 </p>
                 <p>
-                    <strong>Occupation:</strong> {occupation}
+                    <strong> {ChangeLanguageCard[lang].occupation}:</strong>{" "}
+                    {occupation}
                 </p>
                 <p>
-                    <strong>Gender:</strong> {sex === 1 ? "female" : "male"}
+                    <strong>{ChangeLanguageCard[lang].gender}:</strong>{" "}
+                    {sex === 1
+                        ? ChangeLanguageCard[lang].female
+                        : ChangeLanguageCard[lang].male}
                 </p>
                 <p>
-                    <strong>Popularity:</strong> {popularity}
+                    <strong>{ChangeLanguageCard[lang].popularity}:</strong>{" "}
+                    {popularity}
                 </p>
                 <ul>
                     <p>
-                        <strong>Known for:</strong>
+                        <strong>
+                            {ChangeLanguageCard[lang]["known-for"]}:
+                        </strong>
                     </p>
                     {works.map((work, i) => (
                         <li key={`work${i}`}>{work.title}</li>

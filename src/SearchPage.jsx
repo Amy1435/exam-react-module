@@ -1,12 +1,27 @@
 import SearchBar from "./SearchBar";
 import { useEffect, useState } from "react";
+import { useContext } from "react";
 import PersonCard from "./PersonCard";
 const apiKey = import.meta.env.VITE_API_KEY;
+import LanguageContext from "./LanguageContext";
 
 const SearchPage = () => {
     const [error, setError] = useState("");
     const [actorBySearch, setActorBySearch] = useState([]);
     const [querySearch, setQuerySearch] = useState("");
+    const lang = useContext(LanguageContext);
+
+    const ChangeLanguageHome = {
+        "en-US": {
+            title: "Search Page",
+            subtitle: "Search actor/actress by name",
+        },
+        "it-IT": {
+            title: "Pagina di ricerca",
+            subtitle: "Cerca gli attori/attrici per nome",
+        },
+    };
+
     useEffect(() => {
         const fetchActorsBySearch = async () => {
             try {
@@ -22,7 +37,7 @@ const SearchPage = () => {
             }
         };
         fetchActorsBySearch();
-    }, [querySearch]);
+    }, [querySearch, lang]);
 
     const onSearch = async (value) => {
         setQuerySearch(value.toLowerCase());
@@ -31,8 +46,8 @@ const SearchPage = () => {
     return (
         <>
             <div className="title-container">
-                <h1>Search Page</h1>
-                <p>Search actor/actress by name</p>
+                <h1>{ChangeLanguageHome[lang].title}</h1>
+                <p>{ChangeLanguageHome[lang].subtitle}</p>
                 <SearchBar onSearch={onSearch} />
             </div>
             {!error && actorBySearch.length !== 0 ? (

@@ -1,18 +1,30 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useContext } from "react";
 import PersonCard from "./PersonCard";
 const apiKey = import.meta.env.VITE_API_KEY;
+import LanguageContext from "./LanguageContext";
 
 // pagiina principale
 const HomePage = () => {
     const [popularActors, setPopularActors] = useState([]);
     const [error, setError] = useState("");
+    const lang = useContext(LanguageContext);
+
+    const ChangeLanguageHome = {
+        "en-US": {
+            title: "Popular Actors/Actresses",
+        },
+        "it-IT": {
+            title: "Attori/Attrici Popolari",
+        },
+    };
 
     useEffect(() => {
         const fetchPopularActors = async () => {
             try {
                 const response = await fetch(
-                    `https://api.themoviedb.org/3/trending/person/day?api_key=${apiKey}`
+                    `https://api.themoviedb.org/3/trending/person/day?api_key=${apiKey}&language=${lang}`
                 );
                 const obj = await response.json();
                 console.log(obj.results);
@@ -23,14 +35,14 @@ const HomePage = () => {
             }
         };
         fetchPopularActors();
-    }, []);
+    }, [lang]);
 
     return (
         <>
             {!error && popularActors.length !== 0 ? (
                 <>
                     <div className="title-container">
-                        <h1>Popular Actors/Actresses</h1>
+                        <h1> {ChangeLanguageHome[lang].title}</h1>
                     </div>
                     <div className="actor-container">
                         {popularActors.map((a) => (
