@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const PersonCard = ({
     id,
     name,
@@ -8,7 +10,7 @@ const PersonCard = ({
     imagePath,
 }) => {
     return (
-        <div className="actor-card-container">
+        <Link className="actor-card-container" to={`person/${id}`}>
             <figure>
                 <img
                     src={`https://image.tmdb.org/t/p/w500${imagePath}`}
@@ -37,7 +39,7 @@ const PersonCard = ({
                     ))}
                 </ul>
             </div>
-        </div>
+        </Link>
     );
 };
 
