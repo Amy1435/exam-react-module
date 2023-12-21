@@ -1,10 +1,10 @@
 import "./index.scss";
-import HomePage from "./HomePage";
+import SearchPage from "./SearchPage";
 
 function App() {
     return (
         <>
-            <HomePage />
+            <SearchPage />
         </>
     );
 }

@@ -29,22 +29,22 @@ const HomePage = () => {
         <>
             {!error && popularActors.length !== 0 ? (
                 <>
-                    <div>
+                    <div className="title-container">
                         <h1>Popular Actors/Actresses</h1>
-                        <div className="actor-container">
-                            {popularActors.map((a) => (
-                                <PersonCard
-                                    key={a.id}
-                                    id={a.id}
-                                    name={a.name}
-                                    occupation={a.known_for_department} // rivedi
-                                    sex={a.gender} // se 1 femmina se 2 maschio
-                                    popularity={a.popularity}
-                                    works={a.known_for}
-                                    imagePath={a.profile_path}
-                                />
-                            ))}
-                        </div>
+                    </div>
+                    <div className="actor-container">
+                        {popularActors.map((a) => (
+                            <PersonCard
+                                key={a.id}
+                                id={a.id}
+                                name={a.name}
+                                occupation={a.known_for_department} // rivedi
+                                sex={a.gender} // se 1 femmina se 2 maschio
+                                popularity={a.popularity}
+                                works={a.known_for}
+                                imagePath={a.profile_path}
+                            />
+                        ))}
                     </div>
                 </>
             ) : (
