@@ -6,7 +6,7 @@ const Navbar = ({ setLang }) => {
     const lang = useContext(LanguageContext);
     const ChangeLanguage = {
         "en-US": {
-            about: "about",
+            about: "About",
             search: " Search Actor/Actresses",
         },
         "it-IT": {
