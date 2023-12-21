@@ -34,6 +34,7 @@ const PersonPage = () => {
             title: "Attore/Attrice id:",
         },
     };
+
     useEffect(() => {
         const fetchActorsById = async () => {
             try {
@@ -44,7 +45,13 @@ const PersonPage = () => {
                 if (obj.success === false) {
                     setError("Nessun personaggio trovato");
                 }
-                console.log(obj);
+
+                const birthDay = obj.birthday;
+
+                const result = age(birthDay);
+
+                obj.age = result;
+
                 setActorById(obj);
             } catch (error) {
                 console.log(error);
@@ -84,7 +91,11 @@ const PersonPage = () => {
                             {actorById.gender === 1 ? "female" : "male"}
                         </p>
                         <p>
-                            <strong> {ChangeLanguagePerPage[lang].age}:</strong>
+                            <strong>
+                                {" "}
+                                {ChangeLanguagePerPage[lang].age}:{" "}
+                                {actorById.age}
+                            </strong>
                         </p>
                         <p>
                             <strong>
@@ -104,6 +115,15 @@ const PersonPage = () => {
             )}
         </>
     );
+};
+
+const age = (birthDay) => {
+    const birth = birthDay;
+    const birthArray = birth.split("-");
+    const year = birthArray[0];
+    const todayYear = 2023;
+    const age = todayYear - year;
+    return age;
 };
 
 export default PersonPage;
