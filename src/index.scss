@@ -58,3 +58,20 @@ nav {
         }
     }
 }
+
+.id-actor-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+    figure {
+        height: 500px;
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .bio {
+        width: 700px;
+    }
+}
