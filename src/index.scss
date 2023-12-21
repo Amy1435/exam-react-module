@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.actor-container {
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    padding: 1.5rem;
+    justify-items: center;
+    justify-content: center;
+    gap: 2rem;
+    .actor-card-container {
+        background-color: aqua;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        align-items: center;
+
+        ul {
+            list-style: none;
+        }
+
+        figure {
+            height: 400px;
+            img {
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
