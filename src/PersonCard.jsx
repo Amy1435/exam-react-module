@@ -35,6 +35,10 @@ const PersonCard = ({
     };
     return (
         <Link className="actor-card-container" to={`../person/${id}`}>
+            <div className="name">
+                <p>{name}</p>
+            </div>
+
             <figure>
                 <img
                     src={`https://image.tmdb.org/t/p/w500${imagePath}`}
@@ -42,9 +46,6 @@ const PersonCard = ({
                 />
             </figure>
             <div className="actor-info">
-                <p>
-                    <strong>{ChangeLanguageCard[lang].name}:</strong> {name}
-                </p>
                 <p>
                     <strong> {ChangeLanguageCard[lang].occupation}:</strong>{" "}
                     {occupation}

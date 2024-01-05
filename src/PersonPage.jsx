@@ -66,7 +66,8 @@ const PersonPage = () => {
             {!error && actorById ? (
                 <div className="id-actor-container">
                     <h1>
-                        {ChangeLanguagePerPage[lang].title} {id}
+                        {ChangeLanguagePerPage[lang].title} {id}-
+                        {actorById.name}
                     </h1>
 
                     <figure>
@@ -76,13 +77,6 @@ const PersonPage = () => {
                         />
                     </figure>
                     <div className="info">
-                        <p>
-                            <strong>
-                                {" "}
-                                {ChangeLanguagePerPage[lang].name}:{" "}
-                            </strong>
-                            {actorById.name}
-                        </p>
                         <p>
                             <strong>
                                 {" "}
